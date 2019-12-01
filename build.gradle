@@ -6,6 +6,11 @@ plugins {
 repositories {
     jcenter()
 }
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.sanzhar.App'
+    }
+}
 
 dependencies {
     implementation 'com.google.guava:guava:28.0-jre'

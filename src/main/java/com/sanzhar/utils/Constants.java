@@ -19,4 +19,5 @@ public class Constants {
     public static final int MAX_CONNECTIONS = 2;
     public static final String invalidArgument = "InvalidArgument! Please provide one argument, either SINGLE, or SEPARATE";
     public static final String endMessage = "The end!";
+    public static final String startMessage = "Start!";
 }

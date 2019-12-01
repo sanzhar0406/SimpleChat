@@ -35,6 +35,7 @@ public class App {
 
     public static void main(String[] args) throws IOException {
         ArgumentParser.isValid(args);
+        System.out.println(Constants.startMessage);
         if (ArgumentParser.getType(args) == GameType.SINGLE) {
             app.runSingle();
         } else {
@@ -59,7 +60,7 @@ public class App {
         } catch (InterruptedException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("The end!");
+        System.out.println(Constants.endMessage);
     }
 
     /**
@@ -102,7 +103,7 @@ public class App {
         serverThread.start();
         
         try {
-            Thread.sleep(5000);
+            Thread.sleep(1000);
         } catch (InterruptedException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }

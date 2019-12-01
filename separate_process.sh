@@ -1,1 +1,1 @@
-gradle run --args="SEPARATE"
+java -jar build/libs/360TTask.jar SEPARATE
