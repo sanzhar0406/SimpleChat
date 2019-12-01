@@ -12,6 +12,11 @@ jar {
     }
 }
 
+javadoc {
+    source = sourceSets.main.allJava
+    classpath = configurations.compile
+}
+
 dependencies {
     implementation 'com.google.guava:guava:28.0-jre'
 

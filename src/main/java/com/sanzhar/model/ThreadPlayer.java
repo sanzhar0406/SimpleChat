@@ -24,7 +24,6 @@ public class ThreadPlayer extends AbstractPlayer {
      * @param type is an enum value, either INITIATOR or RESPONDENT
      * @param myMessageQueue is a queue with this player messages
      * @param receiverMessageQueue is a queue with another player messages
-     * @throws IOException in case of socket creation failure
      */
     public ThreadPlayer(PlayerType type, LinkedBlockingDeque<Message> myMessageQueue, LinkedBlockingDeque<Message> receiverMessageQueue) {
         super(type);
@@ -49,10 +48,9 @@ public class ThreadPlayer extends AbstractPlayer {
      * queue
      *
      * @return a <code> Message </code> object carrying content and sender
-     * @throws IOException in case of failing to read from BufferedReader
      */
     @Override
-    public Message receive() throws InterruptedException {
+    public Message receive() {
         receivedCounter++;
         return myMessageQueue.takeFirst();
     }

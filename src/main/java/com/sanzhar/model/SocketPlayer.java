@@ -71,7 +71,6 @@ public class SocketPlayer extends AbstractPlayer {
      * name, increments receivedCounter
      *
      * @return a <code> Message </code> object carrying content and sender
-     * @throws IOException in case of failing to read from BufferedReader
      */
     @Override
     public Message receive() {
@@ -90,7 +89,6 @@ public class SocketPlayer extends AbstractPlayer {
      * Close method sends closing signal to server and closes socket with reader
      * and writer
      *
-     * @throws IOException in case of failing to write or close
      */
     @Override
     protected void close() {

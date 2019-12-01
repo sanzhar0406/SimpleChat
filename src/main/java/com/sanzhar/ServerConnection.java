@@ -30,7 +30,7 @@ public class ServerConnection extends Thread {
      *
      * @param socket, for communication
      * @param connectionList list of connected sockets
-     * @throws IOException
+     * @throws IOException in case of failing to get socket input or output stream
      */
     public ServerConnection(Socket socket, LinkedList<ServerConnection> connectionList) throws IOException {
         this.socket = socket;
