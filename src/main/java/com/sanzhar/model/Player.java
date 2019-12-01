@@ -7,7 +7,7 @@ package com.sanzhar.model;
 
 /**
  *
- * @author alyce
+ * @author Sanzhar
  */
 public interface Player {
     

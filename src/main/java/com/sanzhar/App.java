@@ -120,6 +120,6 @@ public class App {
         } catch (InterruptedException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("The end!");
+        System.out.println(Constants.endMessage);
     }
 }

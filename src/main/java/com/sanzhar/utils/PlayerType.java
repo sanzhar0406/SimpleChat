@@ -7,7 +7,8 @@ package com.sanzhar.utils;
 
 /**
  *
- * @author alyce
+ * @author Sanzhar
+ *
  */
 public enum PlayerType {
     INITIATOR,

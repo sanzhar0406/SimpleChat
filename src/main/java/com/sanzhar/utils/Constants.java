@@ -7,7 +7,8 @@ package com.sanzhar.utils;
 
 /**
  *
- * @author alyce
+ * @author Sanzhar
+ *
  */
 public class Constants {
 
@@ -16,4 +17,6 @@ public class Constants {
     public static final String address = "127.0.0.1";
     public static final int PORT = 8080;
     public static final int MAX_CONNECTIONS = 2;
+    public static final String invalidArgument = "InvalidArgument! Please provide one argument, either SINGLE, or SEPARATE";
+    public static final String endMessage = "The end!";
 }

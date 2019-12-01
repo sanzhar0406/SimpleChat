@@ -16,7 +16,7 @@ import java.util.LinkedList;
 
 /**
  *
- * @author alyce
+ * @author Sanzhar, ServerConnection class, for communication with clients
  */
 public class ServerConnection extends Thread {
 
@@ -26,9 +26,10 @@ public class ServerConnection extends Thread {
     private LinkedList<ServerConnection> connectionList;
 
     /**
-     * для общения с клиентом необходим сокет (адресные данные)
+     * ServerConnection constructor
      *
-     * @param socket
+     * @param socket, for communication
+     * @param connectionList list of connected sockets
      * @throws IOException
      */
     public ServerConnection(Socket socket, LinkedList<ServerConnection> connectionList) throws IOException {
@@ -39,6 +40,10 @@ public class ServerConnection extends Thread {
         start();
     }
 
+    /**
+     * run method, reads message from clients and sends to other connected clients
+     *
+     */
     @Override
     public void run() {
         String message;
@@ -47,7 +52,7 @@ public class ServerConnection extends Thread {
                 message = in.readLine();
                 if (message.equals(Constants.FINISH)) {
                     close();
-                    break; // выходим из цикла если пришло "stop"
+                    break;
                 }
                 for (ServerConnection connection : connectionList) {
                     if (connection.equals(this)) {
@@ -62,7 +67,7 @@ public class ServerConnection extends Thread {
     }
 
     /**
-     * отсылка одного сообщения клиенту по указанному потоку
+     * send method, writes message as a string into
      *
      * @param msg
      */
@@ -76,7 +81,7 @@ public class ServerConnection extends Thread {
     }
 
     /**
-     * закрытие сервера прерывание себя как нити и удаление из списка нитей
+     * gracefully closing connection
      */
     private void close() {
         try {

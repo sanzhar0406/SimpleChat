@@ -7,7 +7,7 @@ package com.sanzhar.model;
 
 /**
  *
- * @author alyce
+ * @author Sanzhar, Message class contains content and senderName
  */
 public class Message {
 
