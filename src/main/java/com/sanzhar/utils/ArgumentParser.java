@@ -48,7 +48,7 @@ public class ArgumentParser {
      */
     private static boolean firstArgumentUnsupported(String[] args) {
         String firstArgument = args[0];
-        if (!firstArgument.equals(GameType.SINGLE.name()) || !firstArgument.equals(GameType.SEPARATE.name())) {
+        if (firstArgument.equals(GameType.SINGLE.name()) || firstArgument.equals(GameType.SEPARATE.name())) {
             return false;
         }
         return true;

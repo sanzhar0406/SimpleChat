@@ -48,9 +48,10 @@ public class ThreadPlayer extends AbstractPlayer {
      * queue
      *
      * @return a <code> Message </code> object carrying content and sender
+     * @throws InterruptedException in case of failing to get queue`s last elemet
      */
     @Override
-    public Message receive() {
+    public Message receive() throws InterruptedException {
         receivedCounter++;
         return myMessageQueue.takeFirst();
     }

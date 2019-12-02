@@ -18,10 +18,9 @@ import java.util.logging.Logger;
 /**
  * @author Sanzhar
  *
- * Main class of the application
- * Parses the command line args using ArgumentParser
- * based on user preferences runs either:
- * @see #runSingle or 
+ * Main class of the application Parses the command line args using
+ * ArgumentParser based on user preferences runs either:
+ * @see #runSingle or
  * @see #runSeparate process game
  */
 public class App {
@@ -44,10 +43,12 @@ public class App {
     }
 
     /**
-    * Runs two threads for initiator and repondent
-    * joins on successful completion
-    */
-    private void runSingle() {
+     * Runs two threads for initiator and repondent joins on successful
+     * completion
+     *
+     * @return a <code> boolean </code> for identifying success of operation
+     */
+    public boolean runSingle() {
         ThreadPlayer initiator = new ThreadPlayer(PlayerType.INITIATOR, initiatorMessageQueue, receiverMessageQueue);
         ThreadPlayer respondent = new ThreadPlayer(PlayerType.RESPONDENT, receiverMessageQueue, initiatorMessageQueue);
         Thread initiatorThread = new Thread(initiator);
@@ -59,16 +60,21 @@ public class App {
             respondentThread.join();
         } catch (InterruptedException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
         System.out.println(Constants.endMessage);
+        return true;
     }
 
     /**
-    * Runs a serverThread which accepts Client connection requests
-    * and creates a ServerConnection for each socket to keep connection
-    * then creates initiator and respondent sockets
-    */
-    private void runSeparate() throws IOException {
+     * Runs a serverThread which accepts Client connection requests and creates
+     * a ServerConnection for each socket to keep connection then creates
+     * initiator and respondent sockets
+     *
+     * @return a <code> boolean </code> for identifying success of operation
+     * @throws IOException in case of socket creation failure
+     */
+    public boolean runSeparate() throws IOException  {
         Thread serverThread = new Thread() {
             @Override
             public void run() {
@@ -89,7 +95,7 @@ public class App {
                             Socket socket = server.accept();
                             try {
                                 // adding connection to connections list
-                                serverList.add(new ServerConnection(socket, serverList)); 
+                                serverList.add(new ServerConnection(socket, serverList));
                             } catch (IOException e) {
                                 socket.close();
                             }
@@ -101,11 +107,12 @@ public class App {
             }
         };
         serverThread.start();
-        
+
         try {
             Thread.sleep(1000);
         } catch (InterruptedException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
         SocketPlayer initiator = new SocketPlayer(PlayerType.INITIATOR, Constants.address, Constants.PORT);
         SocketPlayer respondent = new SocketPlayer(PlayerType.RESPONDENT, Constants.address, Constants.PORT);
@@ -120,7 +127,9 @@ public class App {
             respondentThread.join();
         } catch (InterruptedException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
         System.out.println(Constants.endMessage);
+        return true;
     }
 }

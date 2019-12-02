@@ -92,4 +92,12 @@ public abstract class AbstractPlayer implements Runnable, Player {
      */
     protected void close() {
     }
+    
+    public int getReceivedCounter() {
+        return receivedCounter;
+    }
+
+    public int getSentCounter() {
+        return sentCounter;
+    }
 }

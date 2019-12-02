@@ -5,7 +5,6 @@
  */
 package com.sanzhar.model;
 
-import com.sanzhar.App;
 import com.sanzhar.utils.Constants;
 import com.sanzhar.utils.PlayerType;
 import java.io.BufferedReader;
